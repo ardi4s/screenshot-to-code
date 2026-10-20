@@ -1,10 +1,11 @@
 # ---- stage 1: build frontend ----
 FROM node:22-bookworm-slim AS fe
 WORKDIR /app
-COPY frontend/package.json frontend/yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN npm install -g pnpm@10.32.1
+COPY frontend/package.json frontend/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 COPY frontend/ ./
-RUN yarn build
+RUN pnpm run build
 
 # ---- stage 2: backend + static ----
 FROM python:3.12.3-slim-bookworm
