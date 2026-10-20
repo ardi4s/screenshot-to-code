@@ -51,7 +51,7 @@ app.add_middleware(
 # Add routes
 app.include_router(generate_code.router)
 app.include_router(screenshot.router)
-app.include_router(home.router)
+# app.include_router(home.router)
 app.include_router(capabilities.router)
 app.include_router(evals.router)
 app.include_router(export.router)
